@@ -1,36 +1,40 @@
-# RICA - Redes Inteligentes, Confiáveis e Adaptáveis
+# RICA - Redes Inteligentes Confiáveis e Adaptáveis
 
-## Descrição
+## Reliable and Adaptive Intelligent Networks
 
-RICA (Redes Inteligentes, Confiáveis e Adaptáveis para Aplicações Críticas) é um projeto de pesquisa que aborda os desafios emergentes no gerenciamento de redes complexas e heterogêneas. O projeto integra tecnologias de **Time-Sensitive Networking (TSN)**, **Computação em Nuvem**, **Redes Sem Fio** e **Inteligência Artificial** para garantir confiabilidade, adaptabilidade e segurança em ambientes críticos.
+Página web do projeto RICA desenvolvida em HTML, CSS e JavaScript puro, inspirada no design do projeto SirAI com paleta de cores personalizada.
 
-### Foco Principal
+### 📋 Descrição
 
-Investigar o uso de **Modelos de Linguagem Grandes (LLMs)** para auxiliar no gerenciamento, compreensão semântica e identificação de vulnerabilidades em redes, explorando o treinamento de modelos especialistas como caminho promissor para a criação de **sistemas multiagentes resilientes**.
+Este projeto é uma página web moderna e responsiva para apresentar o projeto de pesquisa **RICA** (Redes Inteligentes Confiáveis e Adaptáveis), financiado pela CHAMADA CNPQ/MCTI Nº 44/2024 - Faixa B - Grupos Consolidados.
 
-## Características da Página
+### 🎨 Características
 
-- **Design Responsivo:** Totalmente adaptável para dispositivos móveis, tablets e desktops
-- **Suporte Multilíngue:** Português e Inglês com alternância dinâmica
-- **Navegação Intuitiva:** Menu sticky com suavização de scroll
-- **Animações Suaves:** Transições e efeitos visuais elegantes
-- **Performance Otimizada:** HTML, CSS e JavaScript puro sem dependências externas
-- **Acessibilidade:** Estrutura semântica e navegação por teclado
+- **Design Responsivo**: Funciona perfeitamente em desktop, tablet e mobile
+- **Paleta de Cores Personalizada**: 
+  - Azul Profundo (#1e3a8a) - Cor primária
+  - Roxo (#7c3aed) - Cor secundária
+  - Laranja (#f97316) - Cor de destaque
+- **Navegação Suave**: Scroll smooth e links internos
+- **Suporte a Múltiplos Idiomas**: Português e Inglês
+- **Animações Elegantes**: Transições e efeitos visuais
+- **Acessibilidade**: Estrutura semântica e navegação por teclado
+- **Performance Otimizada**: Sem dependências externas
 
-## Estrutura de Arquivos
+### 📁 Estrutura de Arquivos
 
 ```
 rica-project/
 ├── index.html          # Arquivo HTML principal
 ├── styles.css          # Estilos CSS
-├── script.js           # Funcionalidades JavaScript
+├── script.js           # JavaScript para interatividade
 ├── README.md           # Este arquivo
-└── .gitignore          # Arquivo para ignorar arquivos desnecessários
+└── LICENSE             # Licença do projeto
 ```
 
-## Como Usar
+### 🚀 Como Usar
 
-### Instalação Local
+#### Localmente
 
 1. Clone o repositório:
 ```bash
@@ -38,168 +42,113 @@ git clone https://github.com/seu-usuario/rica-project.git
 cd rica-project
 ```
 
-2. Abra o arquivo `index.html` em um navegador web:
+2. Abra o arquivo `index.html` no seu navegador:
 ```bash
-# No Linux/Mac
+# No macOS
 open index.html
+
+# No Linux
+xdg-open index.html
 
 # No Windows
 start index.html
-
-# Ou simplesmente arraste o arquivo para o navegador
 ```
 
-### Deployment no GitHub Pages
-
-1. Crie um repositório no GitHub com o nome `rica-project` (ou qualquer outro nome)
-
-2. Clone o repositório:
+Ou use um servidor local:
 ```bash
-git clone https://github.com/seu-usuario/rica-project.git
-cd rica-project
+# Python 3
+python -m http.server 8000
+
+# Node.js (com http-server)
+npx http-server
 ```
 
-3. Copie os arquivos da gitpage para o repositório:
-```bash
-cp index.html styles.css script.js README.md .
-```
+#### No GitHub Pages
 
-4. Configure o GitHub Pages:
-   - Vá para as configurações do repositório
-   - Navegue até "Pages" (Páginas)
-   - Em "Source" (Fonte), selecione "Deploy from a branch"
-   - Selecione a branch `main` e a pasta `/ (root)`
-   - Clique em "Save"
+1. Faça fork deste repositório
+2. Renomeie para `seu-usuario.github.io` (se for página pessoal) ou mantenha o nome
+3. Vá para as configurações do repositório
+4. Em "Pages", selecione a branch `main` como fonte
+5. A página estará disponível em `https://seu-usuario.github.io/rica-project/`
 
-5. Sua página estará disponível em: `https://seu-usuario.github.io/rica-project/`
+### 🎯 Seções da Página
 
-## Seções da Página
+1. **Home**: Apresentação do projeto com título e subtítulo
+2. **Sobre**: Descrição do projeto e questão central
+3. **Objetivos**: Objetivo geral e 6 objetivos específicos
+4. **Pesquisa**: Tópicos de pesquisa em 4 áreas principais
+5. **Equipe**: Coordenador e principais pesquisadores
+6. **Publicações**: Seção para contribuições científicas
+7. **Palavras-chave**: Tags dos tópicos do projeto
 
-### 1. **Home (Hero)**
-Apresentação visual do projeto com título, subtítulo e chamada para ação.
-
-### 2. **Sobre**
-Descrição detalhada do projeto, seus objetivos e importância.
-
-### 3. **Questão Central**
-Apresenta a questão de pesquisa central que norteia o projeto.
-
-### 4. **Objetivos**
-- Objetivo geral
-- Três objetivos específicos com cards interativos
-
-### 5. **Pesquisa**
-Tópicos de pesquisa organizados em seis categorias:
-- Redes Definidas por Software (SDN)
-- Internet das Coisas (IoT)
-- Redes Veiculares
-- Redes Táticas
-- LLMs para Redes
-- Segurança e Resiliência
-
-### 6. **Equipe**
-Informações sobre a equipe e contato com o laboratório WINET.
-
-### 7. **Publicações**
-Seção para listar publicações científicas do projeto.
-
-## Funcionalidades JavaScript
-
-### Alternância de Idioma
-- Botões PT/EN no topo da página
-- Alternância dinâmica entre português e inglês
-- Preferência salva no localStorage
-
-### Menu Mobile
-- Hamburger menu responsivo
-- Fechamento automático ao clicar em um link
-- Suporte para navegação por teclado (ESC para fechar)
-
-### Animações de Scroll
-- Observador de interseção para animar cards ao entrar na viewport
-- Efeito fade-in suave
-- Atualização de link ativo na navegação durante scroll
-
-### Navegação Suave
-- Scroll suave ao clicar em links internos
-- Destaque visual do link ativo na navegação
-
-## Personalização
+### 🛠️ Personalização
 
 ### Cores
 Edite as variáveis CSS em `styles.css`:
+
 ```css
 :root {
-    --primary-color: #0066cc;
-    --primary-dark: #004499;
-    --secondary-color: #00aa88;
-    --accent-color: #ff6600;
+    --primary-color: #1e3a8a;        /* Azul profundo */
+    --secondary-color: #7c3aed;      /* Roxo */
+    --accent-color: #f97316;         /* Laranja */
     /* ... outras cores ... */
 }
 ```
 
 ### Conteúdo
-Edite o arquivo `index.html` para:
-- Adicionar/remover seções
-- Atualizar textos em português e inglês
-- Modificar links de contato
-- Adicionar novas publicações
+Edite o arquivo `index.html` para adicionar ou modificar:
+- Informações do projeto
+- Membros da equipe
+- Tópicos de pesquisa
+- Publicações
 
-### Fontes
-A página usa a fonte padrão do sistema. Para usar fontes customizadas, adicione um link no `<head>`:
-```html
-<link href="https://fonts.googleapis.com/css2?family=Sua-Fonte&display=swap" rel="stylesheet">
-```
+### Idiomas
+Modifique a função `updatePageContent()` em `script.js` para adicionar traduções completas.
 
-## Compatibilidade
+### 📱 Responsividade
 
-- ✅ Chrome/Chromium (versão 90+)
-- ✅ Firefox (versão 88+)
-- ✅ Safari (versão 14+)
-- ✅ Edge (versão 90+)
-- ✅ Navegadores móveis modernos
+A página é totalmente responsiva com breakpoints em:
+- Desktop: 1200px+
+- Tablet: 768px - 1199px
+- Mobile: até 767px
 
-## Performance
+### ♿ Acessibilidade
 
-- **Tamanho Total:** ~50KB (HTML + CSS + JS)
-- **Sem dependências externas:** Apenas HTML, CSS e JavaScript puro
-- **Otimizado para SEO:** Estrutura semântica e meta tags
-- **Carregamento rápido:** Sem bibliotecas pesadas
+- Estrutura HTML semântica
+- Navegação por teclado
+- Contraste de cores adequado
+- Textos descritivos
 
-## Acessibilidade
+### 🔧 Tecnologias
 
-- ✅ Navegação por teclado
-- ✅ Estrutura semântica HTML
-- ✅ Contraste de cores adequado
-- ✅ Suporte para leitores de tela
-- ✅ Links com texto descritivo
+- **HTML5**: Estrutura semântica
+- **CSS3**: Flexbox, Grid, Gradientes, Animações
+- **JavaScript Vanilla**: Sem frameworks ou dependências
 
-## Contribuindo
+### 📄 Licença
 
-Para contribuir com melhorias:
+Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para detalhes.
 
-1. Faça um fork do repositório
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
+### 👥 Contribuidores
 
-## Licença
+- **Daniel Fernandes Macedo** - Coordenador
+- **Christian Esteve Rothenberg**
+- **José Marcos Nogueira**
+- **Larissa F. Rodrigues Moreira**
+- **Paulo H. L. Rettore**
+- **Rone Ilídio da Silva**
 
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+### 📞 Contato
 
-## Contato
+Para dúvidas ou sugestões sobre o projeto, entre em contato através do repositório ou do email do coordenador.
 
-- **Email:** paulo.rettore@ufmg.br
-- **Laboratório:** [WINET - UFMG](http://www.winet.dcc.ufmg.br)
-- **Departamento:** Ciência da Computação, UFMG
+### 🙏 Agradecimentos
 
-## Referências
-
-Página inspirada em: [SiR.AI Project](https://www.rettore.com.br/sirai-project/)
+- Inspiração visual: Projeto SirAI
+- Financiamento: CHAMADA CNPQ/MCTI Nº 44/2024
 
 ---
 
-**Última atualização:** Junho de 2026
+**Última atualização**: Junho de 2024
 
-**Desenvolvido com ❤️ para a comunidade de pesquisa em redes e IA**
+**Status**: Ativo e em desenvolvimento

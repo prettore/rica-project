@@ -1,21 +1,50 @@
-// ===========================
-// LANGUAGE SWITCHING
-// ===========================
-
+// ===== LANGUAGE SWITCHING =====
 const langButtons = document.querySelectorAll('.lang-btn');
-const ptElements = document.querySelectorAll('*:not(.lang-btn)');
-const enElements = document.querySelectorAll('.hero-description-en, .about-text-en, .question-text-en, .objective-general-en, .objective-card-en, .team-intro-en, .publications-intro-en, .footer-en');
+const htmlElement = document.documentElement;
 
+// Portuguese translations
+const translations = {
+    pt: {
+        'home': 'Home',
+        'about': 'Sobre',
+        'objectives': 'Objetivos',
+        'research': 'Pesquisa',
+        'team': 'Equipe',
+        'publications': 'Publicações',
+        'about-title': 'Sobre o Projeto',
+        'objectives-title': 'Objetivos',
+        'research-title': 'Tópicos de Pesquisa',
+        'team-title': 'Equipe',
+        'publications-title': 'Publicações',
+        'keywords-title': 'Palavras-chave'
+    },
+    en: {
+        'home': 'Home',
+        'about': 'About',
+        'objectives': 'Objectives',
+        'research': 'Research',
+        'team': 'Team',
+        'publications': 'Publications',
+        'about-title': 'About the Project',
+        'objectives-title': 'Objectives',
+        'research-title': 'Research Topics',
+        'team-title': 'Team',
+        'publications-title': 'Publications',
+        'keywords-title': 'Keywords'
+    }
+};
+
+// Set current language
 let currentLanguage = 'pt';
 
 langButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        const lang = this.getAttribute('data-lang');
-        switchLanguage(lang);
+    button.addEventListener('click', () => {
+        const lang = button.getAttribute('data-lang');
+        setLanguage(lang);
     });
 });
 
-function switchLanguage(lang) {
+function setLanguage(lang) {
     currentLanguage = lang;
     
     // Update active button
@@ -25,121 +54,78 @@ function switchLanguage(lang) {
             btn.classList.add('active');
         }
     });
-
-    // Toggle language content
-    if (lang === 'pt') {
-        // Show Portuguese
-        document.querySelectorAll('.hero-description').forEach(el => el.style.display = 'block');
-        document.querySelectorAll('.hero-description-en').forEach(el => el.style.display = 'none');
-        
-        document.querySelectorAll('.about-text').forEach(el => el.style.display = 'block');
-        document.querySelectorAll('.about-text-en').forEach(el => el.style.display = 'none');
-        
-        document.querySelectorAll('.question-text').forEach(el => el.style.display = 'block');
-        document.querySelectorAll('.question-text-en').forEach(el => el.style.display = 'none');
-        
-        document.querySelectorAll('.objective-general-en').forEach(el => el.style.display = 'none');
-        
-        document.querySelectorAll('.objective-card-en').forEach(el => el.style.display = 'none');
-        
-        document.querySelectorAll('.team-intro').forEach(el => el.style.display = 'block');
-        document.querySelectorAll('.team-intro-en').forEach(el => el.style.display = 'none');
-        
-        document.querySelectorAll('.publications-intro').forEach(el => el.style.display = 'block');
-        document.querySelectorAll('.publications-intro-en').forEach(el => el.style.display = 'none');
-        
-        document.querySelectorAll('.footer').forEach(el => {
-            el.querySelector('p:first-child').style.display = 'block';
-            el.querySelector('.footer-en').style.display = 'none';
-        });
-        
-        // Update button text
-        document.querySelector('.cta-button').textContent = 'Saiba Mais';
-        
-    } else if (lang === 'en') {
-        // Show English
-        document.querySelectorAll('.hero-description').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('.hero-description-en').forEach(el => el.style.display = 'block');
-        
-        document.querySelectorAll('.about-text').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('.about-text-en').forEach(el => el.style.display = 'block');
-        
-        document.querySelectorAll('.question-text').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('.question-text-en').forEach(el => el.style.display = 'block');
-        
-        document.querySelectorAll('.objective-general-en').forEach(el => el.style.display = 'block');
-        
-        document.querySelectorAll('.objective-card-en').forEach(el => el.style.display = 'block');
-        
-        document.querySelectorAll('.team-intro').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('.team-intro-en').forEach(el => el.style.display = 'block');
-        
-        document.querySelectorAll('.publications-intro').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('.publications-intro-en').forEach(el => el.style.display = 'block');
-        
-        document.querySelectorAll('.footer').forEach(el => {
-            el.querySelector('p:first-child').style.display = 'none';
-            el.querySelector('.footer-en').style.display = 'block';
-        });
-        
-        // Update button text
-        document.querySelector('.cta-button').textContent = 'Learn More';
-    }
     
-    // Save preference
+    // Update HTML lang attribute
+    htmlElement.setAttribute('lang', lang);
+    
+    // Store preference
     localStorage.setItem('preferredLanguage', lang);
+    
+    // Update page content
+    updatePageContent(lang);
+}
+
+function updatePageContent(lang) {
+    // This function would update all text content based on language
+    // For now, we keep the main content in Portuguese with English subtitles
+    // In a full implementation, you would swap entire sections
+    
+    if (lang === 'en') {
+        document.querySelector('.hero-subtitle').textContent = 'Reliable and Adaptive Intelligent Networks';
+        document.querySelector('.hero-description').textContent = 'Investigating the operation and management of emerging networks for critical applications';
+    } else {
+        document.querySelector('.hero-subtitle').textContent = 'Redes Inteligentes Confiáveis e Adaptáveis';
+        document.querySelector('.hero-description').textContent = 'Investigando a operação e gerenciamento de redes emergentes para aplicações críticas';
+    }
 }
 
 // Load saved language preference
-window.addEventListener('load', function() {
+window.addEventListener('load', () => {
     const savedLanguage = localStorage.getItem('preferredLanguage') || 'pt';
-    switchLanguage(savedLanguage);
+    setLanguage(savedLanguage);
 });
 
-// ===========================
-// MOBILE MENU TOGGLE
-// ===========================
-
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-
-hamburger.addEventListener('click', function() {
-    navMenu.classList.toggle('active');
-    hamburger.classList.toggle('active');
-});
-
-// Close menu when clicking on a link
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', function() {
-        navMenu.classList.remove('active');
-        hamburger.classList.remove('active');
-    });
-});
-
-// ===========================
-// SMOOTH SCROLL BEHAVIOR
-// ===========================
-
+// ===== SMOOTH SCROLL BEHAVIOR =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#') {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
         }
     });
 });
 
-// ===========================
-// SCROLL ANIMATIONS
-// ===========================
+// ===== NAVBAR ACTIVE LINK HIGHLIGHT =====
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('section');
 
+function highlightActiveLink() {
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (window.scrollY >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+            link.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', highlightActiveLink);
+
+// ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -148,126 +134,135 @@ const observerOptions = {
 const observer = new IntersectionObserver(function(entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
+            entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
             observer.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-// Observe cards and topics
-document.querySelectorAll('.objective-card, .research-topic, .publication-item').forEach(el => {
+// Observe all cards and sections
+document.querySelectorAll('.objective-card, .research-topic, .team-member-card, .publication-item').forEach(el => {
+    el.style.opacity = '0';
     observer.observe(el);
 });
 
-// ===========================
-// NAVBAR BACKGROUND ON SCROLL
-// ===========================
-
-const navbar = document.querySelector('.navbar');
-let lastScrollTop = 0;
-
-window.addEventListener('scroll', function() {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+// ===== MOBILE MENU TOGGLE =====
+// Add mobile menu functionality if needed in future
+const createMobileMenu = () => {
+    const navbar = document.querySelector('.navbar');
+    const navMenu = document.querySelector('.nav-menu');
     
-    if (scrollTop > 50) {
-        navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
-    } else {
-        navbar.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
-    }
+    // Check if mobile menu already exists
+    if (document.querySelector('.mobile-menu-toggle')) return;
     
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-});
-
-// ===========================
-// ACTIVE NAV LINK ON SCROLL
-// ===========================
-
-window.addEventListener('scroll', function() {
-    let current = '';
+    // Create toggle button
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'mobile-menu-toggle';
+    toggleBtn.innerHTML = '☰';
+    toggleBtn.style.display = 'none';
     
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (scrollY >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
-        }
-    });
-});
+    // Insert before nav-menu
+    navbar.insertBefore(toggleBtn, navMenu);
+};
 
-// ===========================
-// COUNTER ANIMATION
-// ===========================
-
-function animateCounter(element, target, duration = 2000) {
-    let current = 0;
-    const increment = target / (duration / 16);
+// ===== SCROLL TO TOP BUTTON =====
+const createScrollToTopButton = () => {
+    const scrollBtn = document.createElement('button');
+    scrollBtn.className = 'scroll-to-top';
+    scrollBtn.innerHTML = '↑';
+    scrollBtn.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #1e3a8a, #7c3aed);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 24px;
+        display: none;
+        z-index: 99;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    `;
     
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target;
-            clearInterval(timer);
+    document.body.appendChild(scrollBtn);
+    
+    // Show/hide button
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollBtn.style.display = 'flex';
+            scrollBtn.style.alignItems = 'center';
+            scrollBtn.style.justifyContent = 'center';
         } else {
-            element.textContent = Math.floor(current);
+            scrollBtn.style.display = 'none';
         }
-    }, 16);
-}
-
-// ===========================
-// PAGE LOAD ANIMATION
-// ===========================
-
-window.addEventListener('load', function() {
-    document.body.style.opacity = '1';
-});
-
-// ===========================
-// KEYBOARD NAVIGATION
-// ===========================
-
-document.addEventListener('keydown', function(e) {
-    // ESC key to close mobile menu
-    if (e.key === 'Escape') {
-        navMenu.classList.remove('active');
-        hamburger.classList.remove('active');
-    }
-});
-
-// ===========================
-// UTILITY FUNCTIONS
-// ===========================
-
-// Scroll to top button
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
     });
-}
-
-// Get current language
-function getCurrentLanguage() {
-    return currentLanguage;
-}
-
-// Log page analytics (optional)
-function logPageView() {
-    console.log('Page viewed at:', new Date().toLocaleString());
-}
+    
+    // Scroll to top
+    scrollBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Hover effect
+    scrollBtn.addEventListener('mouseover', () => {
+        scrollBtn.style.transform = 'scale(1.1)';
+    });
+    
+    scrollBtn.addEventListener('mouseout', () => {
+        scrollBtn.style.transform = 'scale(1)';
+    });
+};
 
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
-    logPageView();
-    
-    // Add any additional initialization here
-    console.log('RICA Project website loaded successfully');
+window.addEventListener('load', () => {
+    createScrollToTopButton();
+    highlightActiveLink();
 });
+
+// ===== PERFORMANCE OPTIMIZATION =====
+// Debounce function for scroll events
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Debounced scroll handler
+const debouncedScroll = debounce(highlightActiveLink, 100);
+window.addEventListener('scroll', debouncedScroll);
+
+// ===== KEYBOARD NAVIGATION =====
+document.addEventListener('keydown', (e) => {
+    // Escape key
+    if (e.key === 'Escape') {
+        // Could close any open modals here
+    }
+    
+    // Tab key for accessibility
+    if (e.key === 'Tab') {
+        document.body.classList.add('keyboard-nav');
+    }
+});
+
+document.addEventListener('mousedown', () => {
+    document.body.classList.remove('keyboard-nav');
+});
+
+// ===== ANALYTICS PLACEHOLDER =====
+// Add your analytics code here if needed
+// Example: Google Analytics, Mixpanel, etc.
+
+console.log('RICA Project Page Loaded Successfully');
+console.log('Language:', currentLanguage);
