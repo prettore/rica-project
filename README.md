@@ -32,45 +32,6 @@ rica-project/
 └── LICENSE             # Licença do projeto
 ```
 
-### 🚀 Como Usar
-
-#### Localmente
-
-1. Clone o repositório:
-```bash
-git clone https://github.com/seu-usuario/rica-project.git
-cd rica-project
-```
-
-2. Abra o arquivo `index.html` no seu navegador:
-```bash
-# No macOS
-open index.html
-
-# No Linux
-xdg-open index.html
-
-# No Windows
-start index.html
-```
-
-Ou use um servidor local:
-```bash
-# Python 3
-python -m http.server 8000
-
-# Node.js (com http-server)
-npx http-server
-```
-
-#### No GitHub Pages
-
-1. Faça fork deste repositório
-2. Renomeie para `seu-usuario.github.io` (se for página pessoal) ou mantenha o nome
-3. Vá para as configurações do repositório
-4. Em "Pages", selecione a branch `main` como fonte
-5. A página estará disponível em `https://seu-usuario.github.io/rica-project/`
-
 ### 🎯 Seções da Página
 
 1. **Home**: Apresentação do projeto com título e subtítulo
@@ -144,7 +105,6 @@ Para dúvidas ou sugestões sobre o projeto, entre em contato através do reposi
 
 ### 🙏 Agradecimentos
 
-- Inspiração visual: Projeto SirAI
 - Financiamento: CHAMADA CNPQ/MCTI Nº 44/2024
 
 ---
